@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:navigationdrawer="clr-namespace:Syncfusion.Maui.NavigationDrawer;assembly=Syncfusion.Maui.NavigationDrawer"
+             x:Class="Navigation.MainPage">
+
+    <Grid RowDefinitions="80,*">
+        <Grid BackgroundColor="#6750A4" ColumnDefinitions="Auto,*,Auto" Grid.Row="0" ColumnSpacing="10" Padding="10,0">
+            <Image Grid.Column="0"
+                 HeightRequest="30"
+                 WidthRequest="30"
+                 HorizontalOptions="Start"
+                 Source="hamburgericon.png"             
+                 BackgroundColor="#6750A4">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Handle_Clicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+
+        <navigationdrawer:SfNavigationDrawer x:Name="navigationDrawer" Grid.Row="1">
+            <navigationdrawer:SfNavigationDrawer.DrawerSettings>
+                <navigationdrawer:DrawerSettings DrawerHeaderHeight="177" DrawerWidth="260" DrawerHeight="{OnPlatform WinUI=400}" ContentBackground="#F7F2FB" DrawerFooterHeight="0">
+                    <navigationdrawer:DrawerSettings.DrawerHeaderView>
+                        <Grid RowDefinitions="*,Auto,Auto" Padding="25,25,25,20">
+                            <Image Source="user.png" VerticalOptions="Center" WidthRequest="72" HeightRequest="72"/>
+                            <Label Grid.Row="1" Text="Leslie Alexander"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#1C1B1F" FontAttributes="Bold" FontSize="16" WidthRequest="154"  HorizontalOptions="Center"/>
+                            <Label Grid.Row="2" Text="UX Designer"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#1C1B1F" FontSize="12" WidthRequest="148" HeightRequest="24" HorizontalOptions="Center"/>
+                        </Grid>
+                    </navigationdrawer:DrawerSettings.DrawerHeaderView>
+
+                    <navigationdrawer:DrawerSettings.DrawerContentView>
+                        <ListView x:Name="listView"
+                      ItemSelected="listView_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid>
+                                            
+                                            <Label Text="{Binding}"          
+                                                   FontSize="16"
+                                                   Margin="10,7,0,0"
+                                                   TextColor="Black"
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Center">
+                                            </Label>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </navigationdrawer:DrawerSettings.DrawerContentView>
+                </navigationdrawer:DrawerSettings>
+            </navigationdrawer:SfNavigationDrawer.DrawerSettings>
+        </navigationdrawer:SfNavigationDrawer>
+    </Grid>
+</ContentPage>
